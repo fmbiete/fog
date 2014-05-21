@@ -39,7 +39,7 @@ module Fog
             i_conf['instanceId'] == instance_id
           }
             raise Fog::Compute::AWS::NotFound.new("The instance ID '#{instance_id}' does not exist")
-          elsif self.data[:network_interfaces].find{ |ni,ni_conf| ni_conf['attachment']['instanceId'] == instance_id && ni_conf['attachment']['deviceIndex'] == device_index }
+          elsif self.data[:network_interfaces].find { |ni,ni_conf| ni_conf['attachment']['instanceId'] == instance_id && ni_conf['attachment']['deviceIndex'] == device_index }
             raise Fog::Compute::AWS::Error.new("InvalidParameterValue => Instance '#{instance_id}' already has an interface attached at device index '#{device_index}'.")
           elsif self.data[:network_interfaces][nic_id]
             attachment = self.data[:network_interfaces][nic_id]['attachment']

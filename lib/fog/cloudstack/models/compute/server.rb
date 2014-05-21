@@ -46,7 +46,7 @@ module Fog
         alias_method :public_ip_address=, :ip_address=
 
         def addresses
-          nics.map{|nic| Address.new(nic)}
+          nics.map {|nic| Address.new(nic)}
         end
 
         def destroy(options={})
@@ -74,11 +74,11 @@ module Fog
         end
 
         def security_group_ids
-          @security_group_ids || (self.security_group_list || []).map{|sg| sg["id"]}
+          @security_group_ids || (self.security_group_list || []).map {|sg| sg["id"]}
         end
 
         def security_groups
-          security_group_ids.map{|id| service.security_groups.get(id)}
+          security_group_ids.map {|id| service.security_groups.get(id)}
         end
 
         def save
