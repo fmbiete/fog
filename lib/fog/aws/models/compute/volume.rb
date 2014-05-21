@@ -48,7 +48,7 @@ module Fog
           end
 
           data = service.create_volume(availability_zone, size, 'SnapshotId' => snapshot_id, 'VolumeType' => type, 'Iops' => iops).body
-          new_attributes = data.reject {|key,value| key == 'requestId'}
+          new_attributes = data.reject { |key,value| key == 'requestId' }
           merge_attributes(new_attributes)
 
           if tags = self.tags
