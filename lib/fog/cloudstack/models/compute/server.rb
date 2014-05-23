@@ -51,7 +51,7 @@ module Fog
 
         def destroy(options={})
           requires :id
-          data = service.destroy_virtual_machine(options.merge({'id'=> self.id}))
+          data = service.destroy_virtual_machine(options.merge('id'=> self.id))
           service.jobs.new(data["destroyvirtualmachineresponse"])
         end
 
@@ -121,7 +121,7 @@ module Fog
             Fog::Logger.deprecation("Passing force as a boolean option has been deprecated. Please pass a hash with 'force' => (true|false)")
             options = {'force' => options}
           end
-          data = service.stop_virtual_machine(options.merge({'id' => self.id}))
+          data = service.stop_virtual_machine(options.merge('id' => self.id))
           service.jobs.new(data["stopvirtualmachineresponse"])
         end
       end # Server
